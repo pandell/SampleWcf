@@ -11,6 +11,6 @@
     </head>
     <body>
         <h1>SampleWcf Mail Page</h1>
-        Hello there, traveler.
+        <p>Hello there, traveller.</p>
     </body>
 </html>
