@@ -1,0 +1,27 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
+
+    <ItemGroup>
+        <ConfigurationList Condition=" '@(ConfigurationList)' == '' and $(Configurations) != '' " Include="$(Configuration.Split('+'))" />
+        <ConfigurationList Condition=" '@(ConfigurationList)' == '' " Include="Debug" />
+    </ItemGroup>
+
+    <Target Name="Clobber">
+        <ItemGroup>
+            <FilesToDelete Include="**/*.suo" />
+            <FilesToDelete Include="**/*.user" />
+
+            <DirectoriesToDelete Include="_ReSharper.SampleWcf" Condition=" Exists('_ReSharper.SampleWcf') " />
+
+            <BuildDirs Include="Source/*/*proj" />
+            <DirectoriesToDelete Include="%(BuildDirs.RelativeDir)obj" Condition=" Exists('%(BuildDirs.RelativeDir)obj') " />
+            <DirectoriesToDelete Include="%(BuildDirs.RelativeDir)bin" Condition=" Exists('%(BuildDirs.RelativeDir)bin') " />
+        </ItemGroup>
+        <Delete Files="@(FilesToDelete)" />
+        <RemoveDir Directories="@(DirectoriesToDelete)" />
+    </Target>
+
+    <Target Name="Build">
+        <MSBuild Projects="$(MSBuildProjectDirectory)\SampleWcf.sln" Properties="Configuration=%(ConfigurationList.Identity)" Targets="Build" />
+    </Target>
+
+</Project>

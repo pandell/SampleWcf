@@ -1,0 +1,1 @@
+@call "%~dp0Libraries\Pandell.MSBuild\RunParallel.bat" Clobber Debug "%~dp0SampleWcf.proj" PAUSE
