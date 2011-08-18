@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 
 namespace SampleWcf.Web
 {
@@ -8,7 +9,7 @@ namespace SampleWcf.Web
     public interface IFileTracker
     {
 
-        [OperationContract]
+        [OperationContract, WebInvoke(Method = "POST")]
         void Track(IEnumerable<string> files);
 
     }

@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWcf.Web", "Source\SampleWcf.Web\SampleWcf.Web.csproj", "{916289AE-064F-482E-A9C5-92DD5D92CDA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWcf.TestClient", "Source\SampleWcf.TestClient\SampleWcf.TestClient.csproj", "{46E8A1FA-A258-43A3-985D-F16143F7BB86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{916289AE-064F-482E-A9C5-92DD5D92CDA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{916289AE-064F-482E-A9C5-92DD5D92CDA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{916289AE-064F-482E-A9C5-92DD5D92CDA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46E8A1FA-A258-43A3-985D-F16143F7BB86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46E8A1FA-A258-43A3-985D-F16143F7BB86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46E8A1FA-A258-43A3-985D-F16143F7BB86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46E8A1FA-A258-43A3-985D-F16143F7BB86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
