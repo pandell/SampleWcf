@@ -1,0 +1,6 @@
+/*.suo
+/*ReSharper*
+bin/
+obj/
+*.user
+*.sln.docstates
