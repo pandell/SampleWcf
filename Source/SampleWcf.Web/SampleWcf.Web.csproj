@@ -60,6 +60,7 @@
     <Compile Include="Call.svc.cs">
       <DependentUpon>Call.svc</DependentUpon>
     </Compile>
+    <Compile Include="FileDescriptor.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

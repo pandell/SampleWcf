@@ -9,14 +9,76 @@
 //------------------------------------------------------------------------------
 
 namespace SampleWcf.TestClient.SampleWcfCall {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FileDescriptor", Namespace="http://schemas.datacontract.org/2004/07/SampleWcf.Web")]
+    [System.SerializableAttribute()]
+    public partial struct FileDescriptor : System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] ContentsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] Contents {
+            get {
+                return this.ContentsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContentsField, value) != true)) {
+                    this.ContentsField = value;
+                    this.RaisePropertyChanged("Contents");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SampleWcfCall.IFileTracker")]
     public interface IFileTracker {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileTracker/Track", ReplyAction="http://tempuri.org/IFileTracker/TrackResponse")]
-        void Track(string[] files);
+        void Track(SampleWcf.TestClient.SampleWcfCall.FileDescriptor[] files);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -46,7 +108,7 @@ namespace SampleWcf.TestClient.SampleWcfCall {
                 base(binding, remoteAddress) {
         }
         
-        public void Track(string[] files) {
+        public void Track(SampleWcf.TestClient.SampleWcfCall.FileDescriptor[] files) {
             base.Channel.Track(files);
         }
     }

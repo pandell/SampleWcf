@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.ServiceModel.Web;
 
 using SampleWcf.TestClient.SampleWcfCall;
@@ -17,22 +20,30 @@ namespace SampleWcf.TestClient
         {
             try
             {
-                Console.WriteLine("Start sending");
-                using (var f = new WebChannelFactory<IFileTracker>(new Uri("http://mgardian/samplewcf/Call.svc/FileTracker")))
+                Console.WriteLine("Gathering files");
+                var files = new List<FileDescriptor>();
+                if (args != null)
+                {
+                    files.AddRange(
+                        args
+                        .Where(File.Exists)
+                        .Select(a => new FileDescriptor { Name = a, Contents = File.ReadAllBytes(a) }));
+                }
+
+                Console.WriteLine("Send files");
+                using (var f = new WebChannelFactory<IFileTracker>(new Uri("http://localhost/samplewcf/Call.svc/FileTracker")))
                 {
                     var c = f.CreateChannel();
-                    c.Track(new[]
-                    {
-                        "First.txt",
-                        "Second.txt"
-                    });
+                    c.Track(files.ToArray());
                 }
-                Console.WriteLine("Done sending");
+                Console.WriteLine("Done");
             }
             catch (Exception ex)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.StackTrace);
+                Console.ResetColor();
             }
         }
 
