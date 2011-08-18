@@ -34,7 +34,9 @@ namespace SampleWcf.TestClient
                 using (var f = new WebChannelFactory<IFileTracker>(new Uri("http://localhost/samplewcf/Call.svc/FileTracker")))
                 {
                     var c = f.CreateChannel();
-                    c.Track(files.ToArray());
+                    var i = c.Track(files.ToArray());
+                    Console.WriteLine("Server said:");
+                    Console.Write(i);
                 }
                 Console.WriteLine("Done");
             }

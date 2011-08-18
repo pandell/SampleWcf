@@ -10,7 +10,7 @@ namespace SampleWcf.Web
     {
 
         [OperationContract, WebInvoke(Method = "POST")]
-        void Track(IEnumerable<FileDescriptor> files);
+        string Track(IEnumerable<FileDescriptor> files);
 
     }
 

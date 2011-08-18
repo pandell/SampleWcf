@@ -78,7 +78,7 @@ namespace SampleWcf.TestClient.SampleWcfCall {
     public interface IFileTracker {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileTracker/Track", ReplyAction="http://tempuri.org/IFileTracker/TrackResponse")]
-        void Track(SampleWcf.TestClient.SampleWcfCall.FileDescriptor[] files);
+        string Track(SampleWcf.TestClient.SampleWcfCall.FileDescriptor[] files);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -108,8 +108,8 @@ namespace SampleWcf.TestClient.SampleWcfCall {
                 base(binding, remoteAddress) {
         }
         
-        public void Track(SampleWcf.TestClient.SampleWcfCall.FileDescriptor[] files) {
-            base.Channel.Track(files);
+        public string Track(SampleWcf.TestClient.SampleWcfCall.FileDescriptor[] files) {
+            return base.Channel.Track(files);
         }
     }
 }
